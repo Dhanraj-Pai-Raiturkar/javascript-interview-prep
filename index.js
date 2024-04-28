@@ -127,3 +127,74 @@ const user = {
     }
 }
 
+// Q11 whis are closures
+//lexical scope - lexical scope is the ability for a function to access variables from the parent scope, but not vice versa.
+function outer(str) {
+    const name = 'firefox'
+    console.log("term", term)
+    return function inner() {
+        var term='term'
+        console.log(name, str)
+    }
+}
+outer('lion')();
+//inner function forms a closure in this case, where it is able to access values from its parent or outer environment or lexical scope, but outer function is not able to access inner functions term variable
+//every closure has 3 scopes
+// - local scope (which is within the inner function)
+// - outer function scope (which is the outer function scope)
+// - global scope
+// this forms a scope chain (access to local scope, its parent scope and parents parent and so on)
+// output questions
+let count = 0;
+(function printCount() {
+    if(count === 0){
+        let count = 1;  // showing concept
+        console.log(count)
+    }
+    console.log(count)
+})()
+// the first console will print 1 and the second console will print 0
+// output questions
+var add_n = createBase(6)
+add_n(12) // prints 18(12+6)
+add_n(30) // prints 36(30+6)
+//write a closure(function) to achieve the above cases
+// solution:
+function createBase(number) {
+    return function(argNumber){
+        return number+argNumber
+    }
+}
+// output questions
+function find(index) {
+    let a = [];
+    for(let i=0; i< 1000000; i++){
+        a[i] = i*i;
+    }
+    console.log(a[index]);
+}
+let start = performance.now();
+find(10);
+console.log("time taken find(10)". performance.now() - start);
+start = performance.now()
+find(60);
+console.log("time taken find(60)". performance.now() - start);
+// alter find to optimize the time taken to search index using closures
+// solution
+function find() {
+  let a = [];
+  for (let i = 0; i < 1000000; i++) {
+    a[i] = i * i;
+  }
+  //   console.log(a[index]);
+  return function (index) {
+    console.log(a[index]);
+  };
+}
+const closure = find();
+let startSoln = performance.now();
+closure(10);
+console.log("time taken find(10)", performance.now() - startSoln);
+startSoln = performance.now();
+closure(60);
+console.log("time taken find(60)", performance.now() - startSoln);
