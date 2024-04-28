@@ -77,6 +77,7 @@ function hoistingLet() {
     console.log(lCount); //throws error cannot access lcount before initialization (let is also hoisted, but it is in the temporal dead zone, it lies in the script scope and not global scope till it is initialized)
     let lCount
 }
+// const cannot be declared without initialization
 // temporal dead zone: variables are in the scope, but they have not been declared yet
 
 

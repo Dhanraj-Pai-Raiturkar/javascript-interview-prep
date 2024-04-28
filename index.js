@@ -91,7 +91,7 @@ const fnn1 = (a, x, y, ...numberss) => { //correct version
 }
 fnn1(3,4,5,6)
 
-// Q9 what is a callback function.
+// Q9 what is a callback function?
 // a callback function is a function passed into another function as an arguement, which is then invoked inside the outer function to complete some kind of routine or action
 const arr45242 = [1,2,3,4]
 const diplayValues = (record) => console.log(record)
