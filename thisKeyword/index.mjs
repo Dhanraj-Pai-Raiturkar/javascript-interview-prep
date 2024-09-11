@@ -55,28 +55,43 @@
 
 // implement the code
 
-const calc = {
-  result: undefined,
-  add(number) {
-    if (isNaN(this.result)) this.result = number;
-    else this.result += number;
-    return this;
-  },
-  multiply(number) {
-    if (isNaN(this.result)) this.result = number;
-    else this.result *= number;
-    return this;
-  },
-  subtract(number) {
-    if (isNaN(this.result)) this.result = number;
-    else this.result -= number;
-    return this;
-  },
-};
-const result = calc.add(10).multiply(2).subtract(10).add(10);
-console.log(result.result);
+// const calc = {
+//   result: undefined,
+//   add(number) {
+//     if (isNaN(this.result)) this.result = number;
+//     else this.result += number;
+//     return this;
+//   },
+//   multiply(number) {
+//     if (isNaN(this.result)) this.result = number;
+//     else this.result *= number;
+//     return this;
+//   },
+//   subtract(number) {
+//     if (isNaN(this.result)) this.result = number;
+//     else this.result -= number;
+//     return this;
+//   },
+// };
+// const result = calc.add(10).multiply(2).subtract(10).add(10);
+// console.log(result.result);
 
 // this keyword works differently in ES6 modules and commonjs modules (at top level)
 // in .mjs file or type module files, this is undefined (since es6 modules have strict mode enabled by default)
 // in .js files or commonjs modules, this refers to the exports object
 // in a js file which is linked to an html page, this at top level will be the window object
+
+const pause = async (ms) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("done");
+      resolve();
+    }, ms);
+  });
+};
+
+const notReallyAsync = async () => console.log("fake async call");
+
+await notReallyAsync();
+await pause(2000);
+console.log("OK");
